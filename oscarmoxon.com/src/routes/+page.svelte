@@ -42,25 +42,28 @@
 </script>
 
 <style>
-  .bio-section {
-    width: 100%; /* Take the full width to center the content */
-    max-width: 600px; /* Match the width of the widgets below */
-    margin: 0 auto; /* Center the section horizontally */
-    padding: 20px; /* Add some spacing */
-    box-sizing: border-box; /* Include padding in width calculations */
+  :global(ul) {
+    list-style-type: disc !important;
+    padding-left: 2em !important;
+    margin-left: 0 !important;
   }
 
-  /* Ensure the list styles from the bio text are applied correctly */
-  ul {
-    list-style-type: disc; /* Use default disc style */
-    padding-left: 1em; /* Adjust padding to align text with bullets */
+  :global(li) {
+    margin: 0.4em 0 !important;
+    text-indent: 0.2em;
   }
 
-  li {
-    margin: 0.5em 0; /* Space out list items */
+  :global(ul > li > ul > li)::before { 
+    content: "◇ "; /* Adds custom bullet for second-level */
+    color: grey; /* Bullet color for second-level */
+    left: -1em; /* Adjusts position for second-level bullet */
   }
+
+  .p-note {
+    font-family: 'PT Serif', serif; 
+  }
+
 </style>
-
 
 <Head />
 
@@ -87,6 +90,7 @@
           </div>
         </div>
       {/if}
+      
       <main
         class="flex flex-col relative bg-base-100 md:bg-transparent md:gap-8 z-10"
         itemprop="mainEntityOfPage"
@@ -117,7 +121,7 @@
             </div>
           {/if}
         </div>
-        
+
         {#each posts as post, index}
           {@const year = new Date(post.published ?? post.created).getFullYear()}
           {#if !years.includes(year)}

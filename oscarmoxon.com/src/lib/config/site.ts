@@ -5,7 +5,7 @@ export const site: SiteConfig = {
   protocol: import.meta.env.URARA_SITE_PROTOCOL ?? import.meta.env.DEV ? 'http://' : 'https://',
   domain: import.meta.env.URARA_SITE_DOMAIN ?? 'urara-demo.netlify.app',
   title: 'MOXON',
-  subtitle: 'Oscar Moxon - Essays - Projects - About',
+  subtitle: 'Oscar Moxon - Essays - Projects - Artifical Intelligence - Contact',
   lang: 'en-US',
   description: 'London-based artificial intelligence postgraduate, researching agents and multi-agent systems.',
   author: {

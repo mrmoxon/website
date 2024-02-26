@@ -45,6 +45,28 @@
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? theme?.[1].name : theme[0].name ?? theme[0].name)
 </script>
 
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .nav-item {
+    padding-left: 0.5rem; /* Adjust as needed */
+    padding-right: 0.5rem; /* Adjust as needed */
+  }
+  
+  /* Target first two nav items if they are direct children */
+  .navbar-start > .nav-item:first-child,
+  .navbar-start > .nav-item:nth-child(2) {
+    padding-left: 0.25rem; /* Reduced padding on the left */
+    padding-right: 0.75rem; /* Increased padding on the right if needed */
+  }
+
+</style>
+
 <svelte:head>
   <meta name="theme-color" content={currentThemeColor} />
 </svelte:head>
@@ -56,19 +78,25 @@
   class:-translate-y-32={!pin && scrollY > 0}
   class="fixed z-50 w-full transition-all duration-500 ease-in-out border-b-2 border-transparent max-h-[4.125rem] {scrollY >
     32 && 'backdrop-blur !border-base-content/10 bg-base-100/30 md:bg-base-200/30'}">
-  {#if !search}
+      {#if !search}
     <div in:fly={{ x: -50, duration: 300, delay: 300 }} out:fly={{ x: -50, duration: 300 }} class="navbar">
+
       <div class="navbar-start">
         {#if headerConfig.nav}
           <Nav {path} {title} {pin} {scrollY} nav={headerConfig.nav} />
         {/if}
-        <a href="/" class="btn btn-ghost normal-case text-lg">{site.title}</a>
       </div>
+
+      <a href="/" class="btn btn-ghost normal-case text-lg">{site.title}</a>
+
       <div class="navbar-end">
+        <a href="/CV.pdf" class="btn btn-ghost" target="_blank">CV</a>
+
         {#if headerConfig.search}
           <button aria-label="search" on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
             <span class="i-heroicons-outline-search" />
           </button>
+
         {/if}
         <div id="change-theme" class="dropdown dropdown-end">
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -76,6 +104,7 @@
           <div tabindex="0" class="btn btn-square btn-ghost">
             <span class="i-heroicons-outline-color-swatch" />
           </div>
+
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <!-- reference: https://github.com/saadeghi/daisyui/issues/1285 -->
           <ul
@@ -83,6 +112,7 @@
             class="flex flex-nowrap shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52 p-2 gap-2 overflow-y-auto max-h-[21.5rem]"
             class:hidden={!pin}>
             {#each theme as { name, text }}
+
               <button
                 data-theme={name}
                 on:click={() => {
@@ -101,6 +131,7 @@
                   {/each}
                 </div>
               </button>
+
             {/each}
           </ul>
         </div>
@@ -135,4 +166,5 @@
     class="border-4 border-base-content/10 group-hover:border-transparent col-start-1 row-start-1 rounded-full w-full h-full p-4 grid duration-500 ease-in-out">
     <span class="i-heroicons-solid-chevron-up !w-6 !h-6" />
   </div>
+  
 </button>
