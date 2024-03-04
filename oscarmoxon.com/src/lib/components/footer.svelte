@@ -28,15 +28,7 @@
         : new Date().toJSON().substring(0, 4)}
       {site.author.name}
       <br />
-      Powered by
-      <a
-        rel="noopener noreferrer external"
-        target="_blank"
-        class="tooltip tooltip-secondary hover:text-secondary"
-        data-tip="🌸 [δ] - Based on MDsveX & SvelteKit 🌸"
-        href="https://github.com/importantimport/urara">
-        Urara
-      </a>
+      Oscar Moxon
       {#if footerConfig.html}
         <br />
         {@html footerConfig.html}

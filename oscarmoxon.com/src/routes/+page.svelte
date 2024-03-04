@@ -53,10 +53,8 @@
     text-indent: 0.2em;
   }
 
-  :global(ul > li > ul > li)::before { 
-    content: "◇ "; /* Adds custom bullet for second-level */
-    color: grey; /* Bullet color for second-level */
-    left: -1em; /* Adjusts position for second-level bullet */
+  :global(ul > li > ul) {
+    list-style-type: circle !important; /* Hollow bullet points for second-level lists */
   }
 
   .p-note {

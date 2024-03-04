@@ -57,13 +57,6 @@
     padding-left: 0.5rem; /* Adjust as needed */
     padding-right: 0.5rem; /* Adjust as needed */
   }
-  
-  /* Target first two nav items if they are direct children */
-  .navbar-start > .nav-item:first-child,
-  .navbar-start > .nav-item:nth-child(2) {
-    padding-left: 0.25rem; /* Reduced padding on the left */
-    padding-right: 0.75rem; /* Increased padding on the right if needed */
-  }
 
 </style>
 
